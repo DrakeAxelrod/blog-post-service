@@ -1,0 +1,50 @@
+{
+  "name": "blog-post-service",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@fec/remark-a11y-emoji": "^3.1.0",
+    "@fontsource/jetbrains-mono": "^4.5.0",
+    "@fontsource/nunito": "^4.5.0",
+    "@fontsource/open-sans": "^4.5.2",
+    "cloudinary-build-url": "^0.2.1",
+    "date-fns": "^2.27.0",
+    "esbuild": "^0.14.7",
+    "github-api": "^3.4.0",
+    "github-slugger": "^1.4.0",
+    "globby": "^12.0.2",
+    "gray-matter": "^4.0.3",
+    "mdx-bundler": "^8.0.0",
+    "next": "12.0.7",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "reading-time": "^1.5.0",
+    "rehype-autolink-headings": "^6.1.0",
+    "rehype-code-titles": "^1.0.3",
+    "rehype-prism-plus": "^1.1.3",
+    "rehype-slug": "^5.0.0",
+    "remark-gfm": "^3.0.1",
+    "remark-sectionize": "^1.1.1",
+    "sass": "^1.43.4",
+    "unified": "^10.1.1",
+    "unist-util-visit": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "17.0.2",
+    "@types/react": "17.0.37",
+    "eslint": "8.5.0",
+    "eslint-config-next": "12.0.7",
+    "husky": "^7.0.4",
+    "typescript": "4.5.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}

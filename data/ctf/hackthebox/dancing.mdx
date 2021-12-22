@@ -1,0 +1,126 @@
+---
+title: "HackTheBox - Dancing"
+published: "2021-11-23"
+image:
+  url: https://res.cloudinary.com/draxel/image/upload/ctf/hackthebox/dancing/main_n53aa7.png
+  width: 969
+  height: 512
+  alt: "HackTheBox fawn machine pwn image"
+author:
+  name: "Drake Axelrod"
+  avatar:
+    url: "https://res.cloudinary.com/draxel/image/upload/v1639256540/jenga-2-bw_jkwych.webp"
+description: 
+  "This challenge is all about the smb protocol. SMB stands for Server Message Block."
+tags:
+  - "linux"
+  - "cybersecurity"
+  - "networking"
+  - "hackthebox"
+  - "learning"
+  - "server message block"
+  - "difficulty - ★☆☆☆☆"
+  - "completed - 2021/11/09"
+draft: true
+---
+
+## Summary
+
+This challenge is all about the smb protocol. smb stands for Server Message Block and to quote wikipedia "In computer networking, Server Message Block, one version of which was also known as Common Internet File System, is a communication protocol for providing shared access to files, printers, and serial ports between nodes on a network. It also provides an authenticated inter-process communication mechanism." [^1] The images used in this post were taken from the HackTheBox writeup on fawn since they are high quality. [^2]
+
+### Flag
+
+```bash
+5f61c10dffbc77a704d76016a22f1664
+```
+
+## Detailed solution
+
+**Included here is a depiction of the OSI 7-layer model**
+
+![OSI model](https://res.cloudinary.com/draxel/image/upload/v1638884164/ctf/hackthebox/dancing/osi_iezsiz.png)
+
+1. smb protocol uses a client server model
+
+![client server](https://res.cloudinary.com/draxel/image/upload/v1638884164/ctf/hackthebox/dancing/smb-diagram_lvjtse.png)
+
+2. So as before the first thing we want to start with is enumeration
+
+![nmap](https://res.cloudinary.com/draxel/image/upload/v1638884164/ctf/hackthebox/dancing/nmap_zyjbvz.png)
+
+3. In order to complete this challenge we are going to need a way to connect via the smb protocol
+
+![install smbclient](https://res.cloudinary.com/draxel/image/upload/v1638884164/ctf/hackthebox/dancing/smbclient_fkv96p.png)
+
+4. Once we have downloaded the smbclient package we can attempt to connect to the target machine
+
+![smb connection](https://res.cloudinary.com/draxel/image/upload/v1638884163/ctf/hackthebox/dancing/connection-attempt_iakqxa.png)
+
+![smb connection](https://res.cloudinary.com/draxel/image/upload/v1638884163/ctf/hackthebox/dancing/connection-attempt-2_v1ergc.png)
+
+![smb connection](https://res.cloudinary.com/draxel/image/upload/v1638884164/ctf/hackthebox/dancing/success-connect_vez3ot.png)
+
+
+5. Once we have connected lets see what kind of commands are available to us
+
+![help command](https://res.cloudinary.com/draxel/image/upload/v1638884163/ctf/hackthebox/dancing/help-command_c9neql.png)
+
+6. At this point we can see that ls is available to us, so lets see what kind of stuff we have available to us.
+
+![ls command](https://res.cloudinary.com/draxel/image/upload/v1638884164/ctf/hackthebox/dancing/ls-command_nqvfg6.png)
+
+7. We can see that we have a couple directories available lets dig a little deeper into them
+
+![cd command](https://res.cloudinary.com/draxel/image/upload/v1638884163/ctf/hackthebox/dancing/cd-command_uzcdcq.png)
+
+**at this point we find the flag.txt** 
+
+lets use the get command to grab the flag.txt file
+
+```bash
+get flag.txt
+```
+
+8. finally lets checkout what we got from the flag.txt file
+
+![flag](https://res.cloudinary.com/draxel/image/upload/v1638884163/ctf/hackthebox/dancing/flag_l57y4v.png)
+
+**and there we have it**
+
+## Question and Answer Section
+
+1. What does the 3-letter acronym SMB stand for?
+
+- Server Message Block
+
+2. What port does SMB use to operate at?
+
+- 445
+
+3. What network communication model does SMB use, architecturally speaking?
+
+- client-server model
+
+4. What is the service name for port 445 that came up in our nmap scan?
+
+- microsoft-ds
+
+5. What is the tool we use to connect to SMB shares from our Linux distribution?
+
+- smbclient
+
+6. What is the `flag` or `switch` we can use with the SMB tool to `list` the contents of the share?
+
+- -L
+
+7. What is the name of the share we are able to access in the end?
+
+- WorkShares
+
+8. What is the command we can use within the SMB shell to download the files we find?
+
+- get
+
+
+[^1]: [Wikipedia](https://en.wikipedia.org/wiki/Server_Message_Block)
+[^2]: [Starting Point](https://app.hackthebox.com/starting-point)

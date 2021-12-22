@@ -1,0 +1,121 @@
+{
+  "name": "rehype-code-titles",
+  "version": "1.0.3",
+  "description": "Rehype plugin for parsing code blocks and adding titles to code blocks",
+  "author": {
+    "email": "me@codybrunner.dev",
+    "name": "Cody Brunner",
+    "url": "https://codybrunner.dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rockchalkwushock/rehype-code-titles.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rockchalkwushock/rehype-code-titles/issues"
+  },
+  "homepage": "https://github.com/rockchalkwushock/rehype-code-titles#readme",
+  "license": "MIT",
+  "files": [
+    "index.d.ts",
+    "index.js"
+  ],
+  "keywords": [
+    "code-titles",
+    "html",
+    "mdx",
+    "rehype",
+    "rehype-plugin",
+    "remark",
+    "unified"
+  ],
+  "main": "index.js",
+  "type": "module",
+  "typings": "index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "commit": "git cz",
+    "format": "prettier --write",
+    "lint": "eslint",
+    "prepare": "husky install",
+    "release": "standard-version",
+    "test": "jest --maxWorkers=50%",
+    "test:ci": "jest --ci --passWithNoTests --runInBand",
+    "test:coverage": "yarn test --coverage",
+    "test:watch": "jest --maxWorkers=25% --onlyChanged --watch",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "unist-util-visit": "^3.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^12.1.1",
+    "@commitlint/config-conventional": "^12.1.1",
+    "@rockchalkwushock/eslint-config": "^1.0.3",
+    "@types/dedent": "^0.7.0",
+    "@types/jest": "^26.0.22",
+    "@types/node": "^14.14.41",
+    "@types/unist": "^2.0.3",
+    "commitizen": "^4.2.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "dedent": "^0.7.0",
+    "eslint": "^7.24.0",
+    "husky": "^6.0.0",
+    "jest": "^26.6.3",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1",
+    "rehype": "^11.0.0",
+    "standard-version": "^9.2.0",
+    "ts-jest": "^26.5.5",
+    "typescript": "^4.2.4"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "eslintConfig": {
+    "extends": "@rockchalkwushock/eslint-config",
+    "ignorePatterns": [
+      "package.json",
+      "tsconfig.json"
+    ]
+  },
+  "lint-staged": {
+    "*.+(js|json|md|mdx|ts|tsx|yml|yaml)": [
+      "prettier --write"
+    ],
+    "*.+(ts|tsx)": [
+      "eslint --fix",
+      "tsc --esModuleInterop --noEmit"
+    ]
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5"
+  },
+  "standard-version": {
+    "types": [
+      {
+        "section": "Bugs 🐛",
+        "type": "fix"
+      },
+      {
+        "section": "Features 🎉",
+        "type": "feat"
+      },
+      {
+        "section": "Tests 🧪",
+        "type": "test"
+      }
+    ]
+  }
+}
