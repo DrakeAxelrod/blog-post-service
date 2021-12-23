@@ -138,8 +138,7 @@ export const bundle = async (slug: string) => {
       return options;
     },
   });
-  // const mySlug = slug.split("/");
-  // frontmatter.content = source;
+  frontmatter.content = source;
   frontmatter.slug = slug;
   frontmatter.filename = get_filename(slug);
   frontmatter.readingTime = readingTime(source);
@@ -150,6 +149,7 @@ export const bundle = async (slug: string) => {
   frontmatter.categories = get_tags_from_slug(slug);
   const post = {
     frontMatter: frontmatter,
+    content: source,
     code,
   };
   return post;
