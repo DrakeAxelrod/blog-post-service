@@ -139,7 +139,7 @@ export const bundle = async (slug: string) => {
     },
   });
   // const mySlug = slug.split("/");
-  frontmatter.content = source;
+  // frontmatter.content = source;
   frontmatter.slug = slug;
   frontmatter.filename = get_filename(slug);
   frontmatter.readingTime = readingTime(source);

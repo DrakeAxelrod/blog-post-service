@@ -1,10 +1,9 @@
 import { get_all_bundles } from "@mdx";
 import type { GetStaticProps, NextPage } from "next";
-import { create_bundled_file, create_html_file, public_dir } from "@utils/io";
+import { create_bundled_file, public_dir } from "@utils/io";
 import { emptyDirSync } from "fs-extra";
-import { getMDXComponent, getMDXExport } from "mdx-bundler/client"
+import { getMDXExport } from "mdx-bundler/client"
 import { useMemo } from "react";
-import { fetcher } from "@utils/fetcher";
 import React from "react";
 import ReactDOMServer from "react-dom/server";
 
@@ -23,9 +22,11 @@ export const getStaticProps: GetStaticProps = async () => {
   emptyDirSync(public_dir);
   const bundles = await get_all_bundles();
   bundles.forEach((bundle) => {
+    const html = ReactDOMServer.renderToString(
+          <MDXPage code={bundle.code} />
+        );
+    bundle["html"] = html
     create_bundled_file(bundle);
-    const html = ReactDOMServer.renderToString(<MDXPage code={bundle.code} />);
-    create_html_file(html, bundle);
   });
   return {
     props: { bundles: bundles},
