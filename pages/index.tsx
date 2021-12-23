@@ -16,12 +16,7 @@ const MDXPage = ({ code }: { code: string }) => {
 }
 
 const Home: NextPage = ({ bundles }: any) => {
-  // bundles.map(bundle => {
-  //   const component = MDXPage({ code: bundle.code })
-  //   console.log(ReactDOMServer.renderToString(component));
-  // })
-  //const Component = useMemo(() => getMDXComponent(post.code), [post.code]);
-  return <>{}</>;
+  return <>Blog Post Provider</>;
 };
 
 export const getStaticProps: GetStaticProps = async () => {
