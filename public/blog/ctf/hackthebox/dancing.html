@@ -1,0 +1,63 @@
+<section><h2 id="summary"><a aria-hidden="true" tabindex="-1" href="#summary"><span class="icon icon-link"></span></a>Summary</h2><p>This challenge is all about the smb protocol. smb stands for Server Message Block and to quote wikipedia &quot;In computer networking, Server Message Block, one version of which was also known as Common Internet File System, is a communication protocol for providing shared access to files, printers, and serial ports between nodes on a network. It also provides an authenticated inter-process communication mechanism.&quot; <sup><a href="#user-content-fn-1" id="user-content-fnref-1" data-footnote-ref="true" aria-describedby="footnote-label">1</a></sup> The images used in this post were taken from the HackTheBox writeup on fawn since they are high quality. <sup><a href="#user-content-fn-2" id="user-content-fnref-2" data-footnote-ref="true" aria-describedby="footnote-label">2</a></sup></p><section><h3 id="flag"><a aria-hidden="true" tabindex="-1" href="#flag"><span class="icon icon-link"></span></a>Flag</h3><pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">5f61c10dffbc77a704d76016a22f1664
+</span></code></pre></section></section>
+<section><h2 id="detailed-solution"><a aria-hidden="true" tabindex="-1" href="#detailed-solution"><span class="icon icon-link"></span></a>Detailed solution</h2><p><strong>Included here is a depiction of the OSI 7-layer model</strong></p><p><img src="https://res.cloudinary.com/draxel/image/upload/v1638884164/ctf/hackthebox/dancing/osi_iezsiz.png" alt="OSI model"/></p><ol>
+<li>smb protocol uses a client server model</li>
+</ol><p><img src="https://res.cloudinary.com/draxel/image/upload/v1638884164/ctf/hackthebox/dancing/smb-diagram_lvjtse.png" alt="client server"/></p><ol start="2">
+<li>So as before the first thing we want to start with is enumeration</li>
+</ol><p><img src="https://res.cloudinary.com/draxel/image/upload/v1638884164/ctf/hackthebox/dancing/nmap_zyjbvz.png" alt="nmap"/></p><ol start="3">
+<li>In order to complete this challenge we are going to need a way to connect via the smb protocol</li>
+</ol><p><img src="https://res.cloudinary.com/draxel/image/upload/v1638884164/ctf/hackthebox/dancing/smbclient_fkv96p.png" alt="install smbclient"/></p><ol start="4">
+<li>Once we have downloaded the smbclient package we can attempt to connect to the target machine</li>
+</ol><p><img src="https://res.cloudinary.com/draxel/image/upload/v1638884163/ctf/hackthebox/dancing/connection-attempt_iakqxa.png" alt="smb connection"/></p><p><img src="https://res.cloudinary.com/draxel/image/upload/v1638884163/ctf/hackthebox/dancing/connection-attempt-2_v1ergc.png" alt="smb connection"/></p><p><img src="https://res.cloudinary.com/draxel/image/upload/v1638884164/ctf/hackthebox/dancing/success-connect_vez3ot.png" alt="smb connection"/></p><ol start="5">
+<li>Once we have connected lets see what kind of commands are available to us</li>
+</ol><p><img src="https://res.cloudinary.com/draxel/image/upload/v1638884163/ctf/hackthebox/dancing/help-command_c9neql.png" alt="help command"/></p><ol start="6">
+<li>At this point we can see that ls is available to us, so lets see what kind of stuff we have available to us.</li>
+</ol><p><img src="https://res.cloudinary.com/draxel/image/upload/v1638884164/ctf/hackthebox/dancing/ls-command_nqvfg6.png" alt="ls command"/></p><ol start="7">
+<li>We can see that we have a couple directories available lets dig a little deeper into them</li>
+</ol><p><img src="https://res.cloudinary.com/draxel/image/upload/v1638884163/ctf/hackthebox/dancing/cd-command_uzcdcq.png" alt="cd command"/></p><p><strong>at this point we find the flag.txt</strong></p><p>lets use the get command to grab the flag.txt file</p><pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">get flag.txt
+</span></code></pre><ol start="8">
+<li>finally lets checkout what we got from the flag.txt file</li>
+</ol><p><img src="https://res.cloudinary.com/draxel/image/upload/v1638884163/ctf/hackthebox/dancing/flag_l57y4v.png" alt="flag"/></p><p><strong>and there we have it</strong></p></section>
+<section><h2 id="question-and-answer-section"><a aria-hidden="true" tabindex="-1" href="#question-and-answer-section"><span class="icon icon-link"></span></a>Question and Answer Section</h2><ol>
+<li>What does the 3-letter acronym SMB stand for?</li>
+</ol><ul>
+<li>Server Message Block</li>
+</ul><ol start="2">
+<li>What port does SMB use to operate at?</li>
+</ol><ul>
+<li>445</li>
+</ul><ol start="3">
+<li>What network communication model does SMB use, architecturally speaking?</li>
+</ol><ul>
+<li>client-server model</li>
+</ul><ol start="4">
+<li>What is the service name for port 445 that came up in our nmap scan?</li>
+</ol><ul>
+<li>microsoft-ds</li>
+</ul><ol start="5">
+<li>What is the tool we use to connect to SMB shares from our Linux distribution?</li>
+</ol><ul>
+<li>smbclient</li>
+</ul><ol start="6">
+<li>What is the <code>flag</code> or <code>switch</code> we can use with the SMB tool to <code>list</code> the contents of the share?</li>
+</ol><ul>
+<li>-L</li>
+</ul><ol start="7">
+<li>What is the name of the share we are able to access in the end?</li>
+</ol><ul>
+<li>WorkShares</li>
+</ul><ol start="8">
+<li>What is the command we can use within the SMB shell to download the files we find?</li>
+</ol><ul>
+<li>get</li>
+</ul></section>
+<section data-footnotes="true" class="footnotes"><h2 id="footnote-label" class="sr-only"><a aria-hidden="true" tabindex="-1" href="#footnote-label"><span class="icon icon-link"></span></a>Footnotes</h2>
+<ol>
+<li id="user-content-fn-1">
+<p><a href="https://en.wikipedia.org/wiki/Server_Message_Block">Wikipedia</a> <a href="#user-content-fnref-1" data-footnote-backref="true" class="data-footnote-backref" aria-label="Back to content">↩</a></p>
+</li>
+<li id="user-content-fn-2">
+<p><a href="https://app.hackthebox.com/starting-point">Starting Point</a> <a href="#user-content-fnref-2" data-footnote-backref="true" class="data-footnote-backref" aria-label="Back to content">↩</a></p>
+</li>
+</ol>
+</section>

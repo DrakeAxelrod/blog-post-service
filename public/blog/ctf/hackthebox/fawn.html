@@ -1,0 +1,66 @@
+<p><strong>Location</strong> - found at <a href="https://www.hackthebox.com/">HackTheBox</a></p>
+<section><h2 id="summary"><a aria-hidden="true" tabindex="-1" href="#summary"><span class="icon icon-link"></span></a>Summary</h2><p>This one was interesting because I had actually never done anything with FTP previously. So this one was nice in the sense that I got to learn something new. Ultimately learning is the goal of this endeavor so I think we can safely say we are on the right track. The images used in this post were taken from the HackTheBox writeup on fawn since they are high quality. <sup><a href="#user-content-fn-1" id="user-content-fnref-1" data-footnote-ref="true" aria-describedby="footnote-label">1</a></sup></p></section>
+<section><h2 id="flag"><a aria-hidden="true" tabindex="-1" href="#flag"><span class="icon icon-link"></span></a>Flag</h2><pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">035db21c881520061c53e0536e44f815
+</span></code></pre></section>
+<section><h2 id="detailed-solution"><a aria-hidden="true" tabindex="-1" href="#detailed-solution"><span class="icon icon-link"></span></a>Detailed solution</h2><p>If you&#x27;ve been following along then you&#x27;ll have your .opvn file (for openvpn) so that you can ssh into the machine. If you don&#x27;t want to use your local machine you can always use HackTheBox&#x27;s browser based machine.</p><ul>
+<li>If you haven&#x27;t been following along you can checkout the previous post <a href="https://www.draxel.io/blog/ctf-hackthebox-meow">HackTheBox - Meow</a></li>
+<li>you can also check out <a href="https://help.hackthebox.com/en/articles/5185687-gs-introduction-to-lab-access">HackTheBox Access Guide</a></li>
+</ul><p><strong>Now that your hopefully connected to the machines we can get going.</strong></p><ol>
+<li>First things first lets run nmap</li>
+</ol><pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">sudo</span> nmap TARGET_IP <span class="token comment"># replace TARGET_IP with the ip address of your target machine</span>
+</span></code></pre><p><img src="https://res.cloudinary.com/draxel/image/upload/v1638003588/ctf/hackthebox/fawn/nmap.png" alt="nmap.png"/></p><ol start="2">
+<li>run nmap with the -sV flags</li>
+</ol><pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">sudo</span> nmap -sV TARGET_IP <span class="token comment"># replace TARGET_IP with the ip address of your target machine</span>
+</span></code></pre><p><img src="https://res.cloudinary.com/draxel/image/upload/v1638003588/ctf/hackthebox/fawn/nmap-sV.png" alt="nmap-sV.png"/></p><ol start="3">
+<li>try to connect</li>
+</ol><pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">ftp</span> TARGET_IP <span class="token comment"># replace TARGET_IP with the ip address of your target machine</span>
+</span></code></pre><p><img src="https://res.cloudinary.com/draxel/image/upload/v1638003587/ctf/hackthebox/fawn/ftp-connect.png" alt="ftp-connect.png"/></p><ol start="4">
+<li>at this point we get prompted to provide a username and password. But after checking out the documentation on HackTheBox and some google foo I learned that when misconfigured a FTP service allows for anonymous accounts to access the service.</li>
+</ol><p><img src="https://res.cloudinary.com/draxel/image/upload/v1638003587/ctf/hackthebox/fawn/anonymous.png" alt="anonymous.png"/></p><ol start="5">
+<li>This should get you in and provide you with a new prompt if you then run ls you&#x27;ll see the flag.txt</li>
+</ol><p><img src="https://res.cloudinary.com/draxel/image/upload/v1638003587/ctf/hackthebox/fawn/ftp-prompt.png" alt="ftp-prompt.png"/></p><ol start="6">
+<li>finally lets get the flag onto our machine so we can read it.</li>
+</ol><p><img src="https://res.cloudinary.com/draxel/image/upload/v1638003588/ctf/hackthebox/fawn/flag.png" alt="flag.png"/></p><ol start="7">
+<li>finally on our local machine we just cat the flag.txt</li>
+</ol><pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">cat</span> flag.txt <span class="token comment"># make sure your in the directory in which you the flag.txt got downloaded to.</span>
+</span></code></pre></section>
+<section><h2 id="question-and-answer-section"><a aria-hidden="true" tabindex="-1" href="#question-and-answer-section"><span class="icon icon-link"></span></a>Question and Answer Section</h2><ol>
+<li>What does the 3-letter acronym FTP stand for?</li>
+</ol><ul>
+<li>File Transfer Protocol</li>
+</ul><ol start="2">
+<li>What communication model does FTP use, architecturally speaking?</li>
+</ol><ul>
+<li>Client-Server model</li>
+</ul><ol start="3">
+<li>What is the name of one popular GUI FTP program?</li>
+</ol><ul>
+<li>FileZilla</li>
+</ul><ol start="4">
+<li>Which port is the FTP service active on usually?</li>
+</ol><ul>
+<li>21 TCP</li>
+</ul><ol start="5">
+<li>What acronym is used for the secure version of FTP?</li>
+</ol><ul>
+<li>SFTP</li>
+</ul><ol start="6">
+<li>What is the command we can use to test our connection to the target?</li>
+</ol><ul>
+<li>ping</li>
+</ul><ol start="7">
+<li>From your scans, what version is FTP running on the target?</li>
+</ol><ul>
+<li>vsftpd 3.0.3</li>
+</ul><ol start="8">
+<li>From your scans, what OS type is running on the target?</li>
+</ol><ul>
+<li>Unix</li>
+</ul></section>
+<section data-footnotes="true" class="footnotes"><h2 id="footnote-label" class="sr-only"><a aria-hidden="true" tabindex="-1" href="#footnote-label"><span class="icon icon-link"></span></a>Footnotes</h2>
+<ol>
+<li id="user-content-fn-1">
+<p><a href="https://app.hackthebox.com/starting-point">Starting Point</a> <a href="#user-content-fnref-1" data-footnote-backref="true" class="data-footnote-backref" aria-label="Back to content">↩</a></p>
+</li>
+</ol>
+</section>
