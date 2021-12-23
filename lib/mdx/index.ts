@@ -111,7 +111,7 @@ export const bundle = async (slug: string) => {
   ];
   const { code, frontmatter } = await bundleMDX<FrontMatter>({
     source: source,
-    cwd: PATHS.components,
+    // cwd: PATHS.components,
     // grayMatterOptions: options => {
     //   options.excerpt = true;
     //   return options;
