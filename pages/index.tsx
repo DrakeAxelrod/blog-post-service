@@ -12,7 +12,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const posts = await get_all_front_matter();
   console.log(posts);
   return {
-    props: {},
+    props: posts,
   };
 };
 
