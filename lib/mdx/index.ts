@@ -10,13 +10,15 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 // remark plugins
 import remarkGFB from "remark-gfm";
-import { remarkTocHeadings, remarkListItemWrapTextInSpan } from "./remark";
+import { remarkTocHeadings } from "./remark";
 import a11yEmoji from "@fec/remark-a11y-emoji";
 //import remarkSectionize from "remark-sectionize";
 import readingTime from "reading-time";
 import { PluggableList } from "unified";
-import { PATHS } from "lib/utils/constants";
 import { FrontMatter } from "types/common";
+
+const root = process.cwd();
+const data = join(root, "data")
 
 export function date_sort_desc(a, b) {
   if (a > b) return -1;
@@ -25,17 +27,17 @@ export function date_sort_desc(a, b) {
 }
 
 export const get_slug_from_path = (path: string) => {
-  return path.replace(/\.(mdx|md)/, "").replace(`${PATHS.data}/`, "");
+  return path.replace(/\.(mdx|md)/, "").replace(`${data}/`, "");
 };
 export const get_path_from_slug = (slug) => {
   if (Array.isArray(slug)) {
-    return join(PATHS.data, `${join(...slug)}.mdx`);
+    return join(data, `${join(...slug)}.mdx`);
   }
-  return join(PATHS.data, `${slug}.mdx`);
+  return join(data, `${slug}.mdx`);
 };
 
 export const get_all_paths = async () => {
-  const paths = await globby(PATHS.data, {
+  const paths = await globby(data, {
     expandDirectories: { extensions: ["mdx"] },
   });
   return paths.map((path) => {
@@ -79,14 +81,14 @@ export const bundle = async (slug: string) => {
   const source = get_source_from_slug(slug);
   if (process.platform === "win32") {
     process.env.ESBUILD_BINARY_PATH = join(
-      PATHS.root,
+      root,
       "node_modules",
       "esbuild",
       "esbuild.exe",
     );
   } else {
     process.env.ESBUILD_BINARY_PATH = join(
-      PATHS.root,
+      root,
       "node_modules",
       "esbuild",
       "bin",
@@ -153,7 +155,7 @@ export const bundle = async (slug: string) => {
   return post;
 };
 
-export const get_all_front_matter = async () => {
+export const get_all_bundles = async () => {
   const paths = await get_all_paths();
   const slugs = paths.map((path) => {
     return get_slug_from_path(path);

@@ -16,7 +16,11 @@
     "jsx": "preserve",
     "typeRoots": ["./types/*/**"],
     "baseUrl": ".",
-    "paths": {},
+    "paths": {
+      "@mdx/*": [ "lib/mdx/*"],
+      "@mdx": [ "lib/mdx"],
+      "@utils/*": ["lib/utils/*"]
+    },
     "incremental": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
