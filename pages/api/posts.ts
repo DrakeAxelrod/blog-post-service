@@ -5,8 +5,8 @@ import { public_dir } from "lib/utils/io";
 
 const handler = async (req: Req, res: Res) => {
   const file_paths = await globby(`${public_dir}/**/*`);
-  const filtered = file_paths.filter((path) => path.endsWith(".json"));
-  const posts = filtered.map((path) => readJsonSync(path))
+  // const filtered = file_paths.filter((path) => path.endsWith(".json"));
+  const posts = file_paths.map((path) => readJsonSync(path))
   res.status(200).json(JSON.stringify(posts, null, 2));
 };
 

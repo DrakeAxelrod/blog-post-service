@@ -13,7 +13,7 @@ export const get_public_path_from_slug = (slug) => {
   if (Array.isArray(slug)) {
     return join(public_dir, `${join(...slug)}.json`);
   }
-  return join(public_dir, `${slug}$.json`);
+  return join(public_dir, `${slug}.json`);
 };
 
 export const create_bundled_file = (bundle: BundledMDXFile) => {
