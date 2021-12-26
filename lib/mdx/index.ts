@@ -108,7 +108,7 @@ export const bundle = async (slug: string) => {
   const rehypePlugins: PluggableList = [
     rehypeCodeTitles, // should always be before rehypePrism.
     rehypeSlug,
-    rehypeAutolinkHeadings,
+    [rehypeAutolinkHeadings, { behavior: "wrap" }],
     [rehypePrismPlus, { ignoreMissing: true }],
   ];
   const { code, frontmatter } = await bundleMDX<FrontMatter>({
