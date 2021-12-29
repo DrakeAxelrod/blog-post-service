@@ -8,6 +8,7 @@ import useColors from "hooks/useColors";
 import { FC, ReactNode } from "react";
 import dynamic from "next/dynamic";
 import { FrontMatter } from "types/common";
+import { parseDate } from "@utils/date-parse";
 
 const PostTags = dynamic(() => import("./PostTags"));
 const Author = dynamic(() => import("../author"));
@@ -32,21 +33,30 @@ const PostLayout: FC<PostLayoutProps> = ({ children, frontMatter }) => {
     tags,
     readingTime,
     categories,
+    created,
   } = frontMatter;
   return (
     <Box as="article" className="mdx">
       <Box as="section" mx="auto">
         <Box align="center">
           <Stack as="header" direction="column">
-            <Heading as="h1" fontSize={["3rem", "4.5rem"]} color={colors.alpha} fontFamily="Nunito">
+            <Heading
+              as="h1"
+              fontSize={["3rem", "4.5rem"]}
+              color={colors.alpha}
+              fontFamily="Nunito"
+            >
               {title}
             </Heading>
             <Text
               fontWeight="semibold"
               color={colors.delta}
-              fontSize={["xs", "md"]}>
-              {"• Published on "}
-              <Text as="time">{published}</Text>
+              fontSize={["xs", "md"]}
+            >
+              {"• Published "}
+              <Text as="time">{parseDate(created).shortFormatted}</Text>
+              {" • Updated on "}
+              <Text as="time">{parseDate(published).shortFormatted}</Text>
               {" •"}
             </Text>
             <NextChakraImage
@@ -61,13 +71,14 @@ const PostLayout: FC<PostLayoutProps> = ({ children, frontMatter }) => {
               alt={image.alt}
             />
             <Stack alignSelf="start" direction="row" alignItems="center" py={4}>
-              <Author />
+              <Author name={author?.name.full} src={author?.avatar} />
               <Text
                 fontWeight="semibold"
                 transform="capitalize"
                 fontSize="xl"
-                color={colors.gamma}>
-                {author.name}
+                color={colors.gamma}
+              >
+                {author?.name.full}
               </Text>
             </Stack>
             <PostTags

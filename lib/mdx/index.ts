@@ -2,7 +2,7 @@ import { bundleMDX } from "mdx-bundler";
 import { globby } from "globby";
 import { join } from "path";
 import { format, parseISO } from "date-fns";
-import fs from "fs";
+import fs, { statSync } from "fs";
 // rehype plugins
 import rehypePrismPlus from "rehype-prism-plus";
 import rehypeCodeTitles from "./rehype/rehype-code-titles";
@@ -16,7 +16,8 @@ import a11yEmoji from "@fec/remark-a11y-emoji";
 import readingTime from "reading-time";
 import { PluggableList } from "unified";
 import { FrontMatter } from "types/common";
-
+import { defaultAuthor } from "./authors"
+import { parseDate } from "@utils/date-parse";
 const root = process.cwd();
 const data = join(root, "data")
 
@@ -73,12 +74,20 @@ export const get_tags_from_slug = (slug) => {
     return tags;
   }
 };
-export const format_date = (str: string) => {
-  return format(parseISO(str), "MMMM do yyyy");
-};
-
+// export const format_date = (str: string | Date) => {
+//   return format(parseISO(str), "MMMM do yyyy");
+// };
+export const get_file_meta_data = (slug: string) => {
+  const file = get_path_from_slug(slug);
+  const stats = statSync(file)
+  return {
+    created: stats.birthtime.toString(),
+    updated: stats.ctime.toString(),
+  }
+}
 export const bundle = async (slug: string) => {
   const source = get_source_from_slug(slug);
+  const stats = get_file_meta_data(slug)
   if (process.platform === "win32") {
     process.env.ESBUILD_BINARY_PATH = join(
       root,
@@ -113,11 +122,11 @@ export const bundle = async (slug: string) => {
   ];
   const { code, frontmatter } = await bundleMDX<FrontMatter>({
     source: source,
-    // cwd: PATHS.components,
-    // grayMatterOptions: options => {
-    //   options.excerpt = true;
-    //   return options;
-    // },
+    cwd: join(root, "components", "mdx-components"),
+    grayMatterOptions: options => {
+      options.excerpt = true;
+      return options;
+    },
     xdmOptions(options) {
       options.remarkPlugins = [
         ...(options.remarkPlugins ?? []),
@@ -143,10 +152,11 @@ export const bundle = async (slug: string) => {
   frontmatter.filename = get_filename(slug);
   frontmatter.readingTime = readingTime(source);
   frontmatter.wordCount = source.split(/\s+/gu).length;
-  frontmatter.date = frontmatter.published;
-  frontmatter.published = format_date(frontmatter.published); //parse(new Date(frontmatter.published))
+  frontmatter.created = stats.created;
+  frontmatter.published = stats.updated; //parse(new Date(frontmatter.published))
   frontmatter.toc = toc;
   frontmatter.categories = get_tags_from_slug(slug);
+  frontmatter.author = defaultAuthor;
   const post = {
     frontMatter: frontmatter,
     content: source,
@@ -169,8 +179,8 @@ export const get_all_bundles = async () => {
     const posts = isDev ? res.filter((e) => !e.frontMatter.draft) : res;
     return posts.sort((a, b) => {
       // sort for latest posts
-      const a1 = new Date(a.frontMatter.date).getTime();
-      const b1 = new Date(b.frontMatter.date).getTime();
+      const a1 = new Date(a.frontMatter.created).getTime();
+      const b1 = new Date(b.frontMatter.created).getTime();
       return date_sort_desc(a1, b1);
     });
   });

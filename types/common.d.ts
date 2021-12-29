@@ -1,22 +1,35 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiRequest, NextApiResponse } from "next";
 import { ReactNode } from "react";
 import { ReadTimeResults } from "reading-time";
 
-declare type Req = NextApiRequest
-declare type Res =  NextApiResponse
+declare type Req = NextApiRequest;
+declare type Res = NextApiResponse;
 
 export type MyWrapper = {
   children?: ReactNode;
 };
 
 declare type Author = {
-  name: string;
-  avatar: {
-    url: string;
-    h: number;
-    w: number;
+  name: {
+    first: string;
+    last: string;
+    full: string;
   };
-};
+  handles: {
+    twitter: string;
+    github: string;
+    linkedin: string;
+  };
+  email: string;
+  socials: {
+    twitter: string;
+    github: string;
+    linkedin: string;
+    discord: string;
+  };
+  avatar: string;
+  summary: string;
+}?;
 
 declare type Image = {
   url: string;
@@ -36,8 +49,8 @@ declare type TOCItem = {
 declare type FrontMatter = {
   title: string;
   author: Author;
+  created: string;
   published: string;
-  date: string;
   image: Image;
   toc: TOCItem[];
   description: string;

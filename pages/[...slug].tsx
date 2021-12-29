@@ -6,7 +6,7 @@ import { FC } from "react";
 import MDXPage from "components/mdx";
 import PageLayout from "components/page-layout";
 import { Box } from "@chakra-ui/react";
-import { bundle, get_all_bundles } from "@mdx";
+import { bundle } from "@mdx";
 
 const Post: FC<any> = ({ frontMatter, code }) => {
   const isDev = process.env.NODE_ENV === "development";
