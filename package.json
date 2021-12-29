@@ -57,7 +57,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && node scripts/update-frontmatter.mjs"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
