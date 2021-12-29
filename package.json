@@ -55,5 +55,13 @@
     "hooks": {
       "pre-commit": "lint-staged && node /scripts/update-front-matter"
     }
+  },
+  "lint-staged": {
+    "*.+(js|jsx|ts|tsx)": [
+      "eslint --fix"
+    ],
+    "*.+(js|jsx|ts|tsx|json|css|md|mdx)": [
+      "prettier --write"
+    ]
   }
 }
