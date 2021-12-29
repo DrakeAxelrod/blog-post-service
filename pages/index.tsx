@@ -19,6 +19,7 @@ const Home: NextPage = ({ bundles }: any) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
+  const isDev = process.env.NODE_ENV === "development";
   emptyDirSync(public_dir);
   const bundles = await get_all_bundles();
   bundles.forEach((bundle) => {

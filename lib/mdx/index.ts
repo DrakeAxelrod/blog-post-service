@@ -18,6 +18,7 @@ import { PluggableList } from "unified";
 import { FrontMatter } from "types/common";
 import { defaultAuthor } from "./authors"
 import { parseDate } from "@utils/date-parse";
+import matter from "gray-matter";
 const root = process.cwd();
 const data = join(root, "data")
 
@@ -78,16 +79,32 @@ export const get_tags_from_slug = (slug) => {
 //   return format(parseISO(str), "MMMM do yyyy");
 // };
 export const get_file_meta_data = (slug: string) => {
-  const file = get_path_from_slug(slug);
-  const stats = statSync(file)
+  const file_path = get_path_from_slug(slug);
+  const stats = statSync(file_path)
   return {
     created: stats.birthtime.toString(),
     updated: stats.ctime.toString(),
   }
 }
+
+// const update_front_matter_dates = (slug: string) => {
+//   const file_path = get_path_from_slug(slug);
+//   // const stats = get_file_meta_data(slug)
+
+//   const file = matter.read(file_path)
+//   const { data: currentFrontmatter } = file;
+//   const updatedFrontMatter = {
+//     ...currentFrontmatter,
+//     created: stats.created,
+//     updated: stats.updated
+//   }
+//   file.data = updatedFrontMatter;
+//   console.log(file.data)
+// }
 export const bundle = async (slug: string) => {
   const source = get_source_from_slug(slug);
-  const stats = get_file_meta_data(slug)
+  // const stats = get_file_meta_data(slug)
+  // update_front_matter_dates(slug)
   if (process.platform === "win32") {
     process.env.ESBUILD_BINARY_PATH = join(
       root,
@@ -152,8 +169,8 @@ export const bundle = async (slug: string) => {
   frontmatter.filename = get_filename(slug);
   frontmatter.readingTime = readingTime(source);
   frontmatter.wordCount = source.split(/\s+/gu).length;
-  frontmatter.created = stats.created;
-  frontmatter.published = stats.updated; //parse(new Date(frontmatter.published))
+  // frontmatter.created = stats.created;
+  // frontmatter.published = stats.updated; //parse(new Date(frontmatter.published))
   frontmatter.toc = toc;
   frontmatter.categories = get_tags_from_slug(slug);
   frontmatter.author = defaultAuthor;
