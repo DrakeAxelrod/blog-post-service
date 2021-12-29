@@ -6,7 +6,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "update-front-matter": "node scripts/update-frontmatter.mjs"
   },
   "dependencies": {
     "@babel/core": "^7.0.0-0",
@@ -51,11 +52,12 @@
     "eslint-config-next": "12.0.7",
     "husky": "^7.0.4",
     "lint-staged": "^12.1.4",
+    "prettier": "^2.5.1",
     "typescript": "4.5.4"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && node /scripts/update-front-matter"
+      "pre-commit": "lint-staged && node scripts/update-frontmatter.mjs"
     }
   },
   "lint-staged": {
