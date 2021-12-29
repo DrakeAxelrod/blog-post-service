@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const url = getAbsoluteURL(`/api/posts`);
+  const url = process.env.isDev ? `http://localhost:3000/api/posts` : "https://posts.draxel.io/api/posts";
   const posts = await fetcher(url);
   // const paths = await getAllFrontMatter();
   return {
