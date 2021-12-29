@@ -40,10 +40,11 @@ const update_front_matter_dates = (file_path) => {
   const file = matter.read(file_path);
   const { data: currentFrontmatter } = file;
   const updatedFrontMatter = {
-    ...currentFrontmatter,
     created: stats.created,
+    ...currentFrontmatter,
     updated: stats.updated,
   };
+  
   file.data = updatedFrontMatter;
   const updatedFileContent = matter.stringify(file);
   fs.writeFileSync(file_path, updatedFileContent);
