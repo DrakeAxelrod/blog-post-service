@@ -1,0 +1,55 @@
+{
+  "frontMatter": {
+    "title": "HackTheBox - Explosion",
+    "image": {
+      "url": "/jenga-2-bw_jkwych.webp",
+      "alt": "HackTheBox fawn machine pwn image"
+    },
+    "description": "outlining the general structure of a linux filesystem as a way to better remember what all the directories are for",
+    "tags": [
+      "linux",
+      "operating systems"
+    ],
+    "draft": true,
+    "content": "---\ntitle: \"HackTheBox - Explosion\"\nimage:\n  url: \"/jenga-2-bw_jkwych.webp\"\n  alt: \"HackTheBox fawn machine pwn image\"\ndescription: \n  \"outlining the general structure of a linux filesystem as a way to better remember what all the directories are for\"\ntags:\n  - \"linux\"\n  - \"operating systems\"\ndraft: true\n---\n ",
+    "slug": "linux/filesystem",
+    "filename": "filesystem",
+    "readingTime": {
+      "text": "1 min read",
+      "minutes": 0.22,
+      "time": 13200,
+      "words": 44
+    },
+    "wordCount": 45,
+    "created": "Wed Dec 29 2021 20:53:58 GMT+0100 (Central European Standard Time)",
+    "published": "Wed Dec 29 2021 22:18:01 GMT+0100 (Central European Standard Time)",
+    "toc": [],
+    "categories": [
+      "linux"
+    ],
+    "author": {
+      "name": {
+        "first": "Drake",
+        "last": "Axelrod",
+        "full": "Drake Axelrod"
+      },
+      "handles": {
+        "twitter": "drakeaxelrod",
+        "github": "drakeaxelrod",
+        "linkedin": "drakeaxelrod"
+      },
+      "email": "drake@draxel.io",
+      "socials": {
+        "twitter": "https://twitter.com/drakeaxelrod",
+        "github": "https://github.com/drakeaxelrod",
+        "linkedin": "https://www.linkedin.com/in/drakeaxelrod",
+        "discord": "https://discordapp.com/users/549704894391517324"
+      },
+      "avatar": "https://avatars.githubusercontent.com/u/51012876?v=4",
+      "summary": "Drake Axelrod enjoys surfing, IT, reading and writing, and learning new things!."
+    }
+  },
+  "content": "---\ntitle: \"HackTheBox - Explosion\"\nimage:\n  url: \"/jenga-2-bw_jkwych.webp\"\n  alt: \"HackTheBox fawn machine pwn image\"\ndescription: \n  \"outlining the general structure of a linux filesystem as a way to better remember what all the directories are for\"\ntags:\n  - \"linux\"\n  - \"operating systems\"\ndraft: true\n---\n ",
+  "code": "var Component=(()=>{var u=Object.create;var o=Object.defineProperty;var x=Object.getOwnPropertyDescriptor;var f=Object.getOwnPropertyNames;var g=Object.getPrototypeOf,p=Object.prototype.hasOwnProperty;var s=e=>o(e,\"__esModule\",{value:!0});var h=(e,t)=>()=>(t||e((t={exports:{}}).exports,t),t.exports),w=(e,t)=>{for(var r in t)o(e,r,{get:t[r],enumerable:!0})},c=(e,t,r,i)=>{if(t&&typeof t==\"object\"||typeof t==\"function\")for(let a of f(t))!p.call(e,a)&&(r||a!==\"default\")&&o(e,a,{get:()=>t[a],enumerable:!(i=x(t,a))||i.enumerable});return e},d=(e,t)=>c(s(o(e!=null?u(g(e)):{},\"default\",!t&&e&&e.__esModule?{get:()=>e.default,enumerable:!0}:{value:e,enumerable:!0})),e),j=(e=>(t,r)=>e&&e.get(t)||(r=c(s({}),t,1),e&&e.set(t,r),r))(typeof WeakMap!=\"undefined\"?new WeakMap:0);var m=h((B,l)=>{l.exports=_jsx_runtime});var k={};w(k,{default:()=>y,frontmatter:()=>_});var n=d(m()),_={title:\"HackTheBox - Explosion\",image:{url:\"/jenga-2-bw_jkwych.webp\",alt:\"HackTheBox fawn machine pwn image\"},description:\"outlining the general structure of a linux filesystem as a way to better remember what all the directories are for\",tags:[\"linux\",\"operating systems\"],draft:!0};function b(e={}){let{wrapper:t}=e.components||{};return t?(0,n.jsx)(t,Object.assign({},e,{children:(0,n.jsx)(r,{})})):r();function r(){return(0,n.jsx)(n.Fragment,{})}}var y=b;return j(k);})();\n;return Component;",
+  "html": ""
+}

@@ -9,5 +9,6 @@ module.exports = {
   },
   env: {
     IS_DEV: IS_DEV,
+    VERCEL_URL: process.env.VERCEL_URL
   },
 };
