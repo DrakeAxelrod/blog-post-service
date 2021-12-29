@@ -1,0 +1,37 @@
+@use "sass:map";
+@use "./variables.scss" as v;
+
+:export {
+  dark_black: v.get-one-dark(dark_black);
+  black: v.get-one-dark(black);
+  white: v.get-one-dark(white);
+  nord_white_1: v.get-snow-storm(1);
+  nord_white_2: v.get-snow-storm(2);
+  nord_white_3: v.get-snow-storm(3);
+  nord_black_1: v.get-polar-night(1);
+  nord_black_2: v.get-polar-night(2);
+  nord_black_3: v.get-polar-night(3);
+  nord_black_4: v.get-polar-night(4);
+  nord_frost_1: v.get-frost(1);
+  nord_frost_2: v.get-frost(2);
+  nord_frost_3: v.get-frost(3);
+  nord_frost_4: v.get-frost(4);
+  nord_red: v.get-aurora(1);
+  nord_orange: v.get-aurora(1);
+  nord_yellow: v.get-aurora(1);
+  nord_green: v.get-aurora(1);
+  nord_purple: v.get-aurora(1);
+  red: v.get-one-dark(red);
+  dark_red: v.get-one-dark(dark_red);
+  green: v.get-one-dark(green);
+  yellow: v.get-one-dark(yellow);
+  dark_yellow: v.get-one-dark(dark_yellow);
+  blue: v.get-one-dark(blue);
+  purple: v.get-one-dark(purple);
+  cyan: v.get-one-dark(cyan);
+  dark_gray: v.get-one-dark(dark_gray);
+  light_gray: v.get-one-dark(light_gray);
+  twitter: v.get-brands(twitter);
+  facebook: v.get-brands(facebook);
+  linkedin: v.get-brands(linkedin);
+}

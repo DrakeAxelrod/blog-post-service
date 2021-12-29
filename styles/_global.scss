@@ -1,0 +1,177 @@
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+// *, *::before, *::after {
+//   box-sizing: border-box;
+// }
+
+/*
+  2. Remove default margin
+*/
+
+// body {
+//   height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+//   height: calc(var(--vh, 1vh) * 100);
+//   min-height: -webkit-fill-available;
+//   line-height: 1.5;
+//   -webkit-font-smoothing: antialiased;
+//   scroll-behavior: smooth;
+//   font-family: "Open Sans";
+// }
+
+// img, picture, video, canvas, svg {
+//   display: block;
+//   max-width: 100%;
+// }
+
+// input, button, textarea, select {
+//   font: inherit;
+// }
+
+// p, h1, h2, h3, h4, h5, h6 {
+//   overflow-wrap: break-word;
+// }
+
+// #root, #__next {
+//   isolation: isolate;
+// }
+
+// #__next {
+//   display: flex;
+//   min-height: 100vh;
+//   flex-direction: column;
+//   padding: 0%;
+//   margin: 0%;
+// }
+// .background-image {
+//   z-index: -1;
+// }
+
+// .rounded-full {
+//   border-radius: 100%;
+// }
+
+// .article-image {
+//   border-radius: 2% 2% 0% 0%;
+// }
+
+// .mdx {
+//   hr {
+//     margin: 50px 0;
+//     display: block;
+//   }
+//   ol {
+//     margin: 1rem;
+//     margin-left: 1.5rem;
+//   }
+//   ul {
+//     margin: 1rem;
+//     margin-left: 1.5rem;
+//     list-style-type: v.$ul_list_marker;
+//   }
+//   ul li::marker {
+//     padding: 3rem;
+//     color: v.get-one-dark(purple);
+//   }
+//   ol li::marker {
+//     color: v.get-one-dark(blue);
+//     font-weight: bold;
+//   }
+//   h2 {
+//     color: v.get-one-dark(green);
+//     padding-top: 1rem;
+//     padding-bottom: 1rem;
+//     // padding-top: 10vh;
+//     // margin-top: -10vh;
+//     font-size: 2.5rem;
+//     font-weight: 900;
+//   }
+//   h3 {
+//     color: v.get-one-dark(green);
+//     padding-top: 1rem;
+//     padding-bottom: 1rem;
+//     // padding-top: 8%;
+//     // margin-top: -8%;
+//     font-size: 2.25rem;
+//     font-weight: 900;
+//   }
+//   h4 {
+//     color: v.get-one-dark(green);
+//     padding-top: 1rem;
+//     padding-bottom: 1rem;
+//     // padding-top: 8%;
+//     // margin-top: -8%;
+//     font-size: 2rem;
+//     font-weight: 900;
+//   }
+//   h5 {
+//     color: v.get-one-dark(green);
+//     padding-top: 1rem;
+//     padding-bottom: 1rem;
+//     // padding-top: 8%;
+//     // margin-top: -8%;
+//     font-size: 1.75rem;
+//     font-weight: 900;
+//   }
+//   p {
+//     img {
+//       padding-left: 2rem;
+//       padding-right: 2rem;
+//       padding-top: 1rem;
+//       padding-bottom: 1rem;
+//     }
+//   }
+//   .footnotes {
+//     ol li::marker {
+//       font-size: larger;
+//       color: v.get-one-dark(white);
+//     }
+//     a[target="_blank"] {
+//       color: v.get-one-dark(cyan);
+//     }
+//     .chakra-link {
+//       color: v.get-one-dark(white);
+//     }
+//   }
+//   .PostTags ul {
+//     margin-right: 0;
+//     margin-left: 0;
+//   }
+//   /**
+//  * Inspired by gatsby remark prism - https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
+//  * 1. Make the element just wide enough to fit its content.
+//  * 2. Always fill the visible space in .code-highlight.
+//  */
+//   .code-highlight {
+//     float: left;
+//     width: 100%;
+//   }
+//   .code-line {
+//     white-space: pre-wrap; /* Since CSS 2.1 */
+//     display: block;
+//     padding-left: 16px;
+//     padding-right: 16px;
+//     margin-left: -16px;
+//     margin-right: -16px;
+//     border-left-width: 4px;
+//     border-left-color: v.get-one-dark(comment);
+//   }
+//   // .code-line:nth-child(even) {
+//   //   margin-left: 0;
+//   //   background-color: $comment;
+//   // }
+//   .highlight-line {
+//     margin-left: -16px;
+//     margin-right: -16px;
+//     background: rgba(255, 255, 255, 0.125);
+//     border-left-width: 4px;
+//     border-left-color: v.get-one-dark(purple);
+//   }
+//   .line-number::before {
+//     opacity: 60%;
+//     padding-right: 16px;
+//     margin-left: -8px;
+//     color: v.get-one-dark(white); /* Line number color */
+//     content: attr(line);
+//   }
+// }

@@ -1,0 +1,7 @@
+@use "sass:map";
+@use "./variables.scss" as v;
+
+:export {
+  nunito: v.get-fonts(nunito);
+  open-sans: v.get-fonts(open_sans);
+}

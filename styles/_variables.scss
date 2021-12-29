@@ -1,0 +1,116 @@
+$nunito: "Nunito";
+$open_sans: "Open Sans", sans-serif;
+$code: "Jetbrains Mono";
+// Font Variables
+$fonts: (
+  nunito: $nunito,
+  open-sans: $open_sans,
+  code: $code,
+);
+
+@function get-fonts($value) {
+  @return map-get($map: $fonts, $key: $value);
+}
+// colors
+
+//`+---------------------------------------------+
+// |  Color Name  |         RGB        |   Hex   |
+// |--------------+--------------------+---------|
+// | Black        | rgb(40, 44, 52)    | #282c34 |
+// |--------------+--------------------+---------|
+// | Dark         | rgb(33, 37, 43)    | #21252b |
+// |--------------+--------------------+---------|
+// | White        | rgb(171, 178, 191) | #abb2bf |
+// |--------------+--------------------+---------|
+// | Light Red    | rgb(224, 108, 117) | #e06c75 |
+// |--------------+--------------------+---------|
+// | Dark Red     | rgb(190, 80, 70)   | #be5046 |
+// |--------------+--------------------+---------|
+// | Green        | rgb(152, 195, 121) | #98c379 |
+// |--------------+--------------------+---------|
+// | Light Yellow | rgb(229, 192, 123) | #e5c07b |
+// |--------------+--------------------+---------|
+// | Dark Yellow  | rgb(209, 154, 102) | #d19a66 |
+// |--------------+--------------------+---------|
+// | Blue         | rgb(97, 175, 239)  | #61afef |
+// |--------------+--------------------+---------|
+// | Magenta      | rgb(198, 120, 221) | #c678dd |
+// |--------------+--------------------+---------|
+// | Cyan         | rgb(86, 182, 194)  | #56b6c2 |
+// |--------------+--------------------+---------|
+// | Gutter Grey  | rgb(76, 82, 99)    | #4b5263 |
+// |--------------+--------------------+---------|
+// | Comment Grey | rgb(92, 99, 112)   | #5c6370 |
+// +---------------------------------------------+`;
+$ul_list_marker: "➔ ";
+
+// One Dark Pro
+$one_dark: (
+  black: #282c34,
+  dark_black: #21252b,
+  white: #abb2bf,
+  red: #e06c75,
+  dark_red: #be5046,
+  green: #98c379,
+  yellow: #e5c07b,
+  dark_yellow: #d19a66,
+  blue: #61afef,
+  purple: #c678dd,
+  cyan: #56b6c2,
+  dark_gray: #4b5263,
+  light_gray: #5c6370,
+);
+// Nord
+$polar_night: (
+  1: #4c566a,
+  2: #434c5e,
+  3: #3b4252,
+  4: #2e3440,
+);
+$snow_storm: (
+  1: #eceff4,
+  2: #e5e9f0,
+  3: #d8dee9,
+);
+$frost: (
+  1: #8fbcbb,
+  2: #88c0d0,
+  3: #81a1c1,
+  4: #5e81ac,
+);
+$aurora: (
+  1: #bf616a,
+  2: #d08770,
+  3: #ebcb8b,
+  4: #a3be8c,
+  5: #b48ead,
+);
+// brands
+$brands: (
+  twitter: #1da1f2,
+  facebook: #4267b2,
+  linkedin: #2867b2,
+);
+
+@function get-one-dark($value) {
+  @return map-get($map: $one_dark, $key: $value);
+}
+@function get-brands($value) {
+  @return map-get($map: $brands, $key: $value);
+}
+
+@function get-polar-night($value) {
+  @return map-get($map: $polar_night, $key: $value);
+}
+
+@function get-snow-storm($value) {
+  @return map-get($map: $snow_storm, $key: $value);
+}
+
+@function get-frost($value) {
+  @return map-get($map: $frost, $key: $value);
+}
+
+@function get-aurora($value) {
+  @return map-get($map: $aurora, $key: $value);
+}

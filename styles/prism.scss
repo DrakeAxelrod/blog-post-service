@@ -1,0 +1,252 @@
+@use "./variables" as v;
+
+$title: v.get-polar-night(3);
+$comment: v.get-one-dark(light_gray);
+$background: v.get-one-dark(black);
+$black: v.get-one-dark(black);
+$blue: v.get-one-dark(blue);
+$cyan: v.get-one-dark(cyan);
+$green: v.get-one-dark(green);
+$purple: v.get-one-dark(purple);
+$red: v.get-one-dark(red);
+$white: v.get-snow-storm(3);
+$yellow: v.get-one-dark(yellow);
+$dark_yellow: v.get-one-dark(dark_yellow);
+
+$md_radius: 0.375rem;
+$space_4: 1rem;
+$space_2: 0.5rem;
+
+$title-font: v.get-fonts(open_sans);
+$code: v.get-fonts(code);
+
+:root {
+  font-variant-ligatures: none;
+}
+/**
+ * Inspired by gatsby remark prism - https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
+ * 1. Make the element just wide enough to fit its content.
+ * 2. Always fill the visible space in .code-highlight.
+ */
+.code-highlight {
+  float: left;
+  width: 100%;
+}
+.code-line {
+  white-space: pre-wrap; /* Since CSS 2.1 */
+  display: block;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-left: -16px;
+  margin-right: -16px;
+  border-left-width: 4px;
+  border-left-color: $comment;
+}
+// .code-line:nth-child(even) {
+//   margin-left: 0;
+//   background-color: $comment;
+// }
+.highlight-line {
+  margin-left: -16px;
+  margin-right: -16px;
+  background: rgba(255, 255, 255, 0.125);
+  border-left-width: 4px;
+  border-left-color: $purple;
+}
+.line-number::before {
+  opacity: 60%;
+  padding-right: 16px;
+  margin-left: -8px;
+  color: $white; /* Line number color */
+  content: attr(line);
+}
+/* rest */
+code {
+  white-space: pre;
+  color: $white;
+}
+code[class*="language-"],
+pre[class*="language-"] {
+  font-family: $code;
+  text-align: left;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+  tab-size: 2;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  width: 100%;
+}
+/* Code blocks */
+pre {
+  overflow-x: auto;
+  background: $background;
+  padding-top: $space_4;
+  padding-bottom: $space_4;
+  padding-left: $space_4;
+  padding-right: $space_4;
+  margin: $space_4 0;
+  white-space: pre-wrap; // was nowrap
+  overflow: auto;
+  min-width: 100%;
+  font-size: 0.9rem;
+  border-radius: $md_radius;
+}
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+.token.entity {
+  cursor: help;
+}
+.rehype-code-title {
+  background: $title;
+  border-color: $title;
+  color: $white;
+  margin-top: $space_4;
+  padding: $space_2 $space_4;
+  border-top-left-radius: $md_radius;
+  border-top-right-radius: $md_radius;
+  font-family: $title-font;
+  border-width: 1px;
+  border-bottom-width: 0;
+  font-size: 1rem;
+  font-weight: 900;
+  margin-bottom: 0;
+  width: 100%;
+  + pre {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-top: 0;
+  }
+}
+/**
+ * Nord Theme Originally by Arctic Ice Studio
+ * https://nordtheme.com
+ *
+ * Ported for PrismJS by Zane Hitchcoxc (@zwhitchcox) and Gabriel Ramos (@gabrieluizramos)
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: $red;
+  background: none;
+  font-family: $code;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: $background;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: $comment;
+}
+
+.token.punctuation {
+  color: $blue;
+}
+
+.namespace {
+  opacity: 0.7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: $red;
+}
+
+.token.number {
+  color: $yellow;
+}
+
+.token.boolean {
+  color: $yellow;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: $green;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  color: $white;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+  color: $blue;
+}
+
+.token.keyword {
+  color: $purple;
+}
+
+.token.regex,
+.token.important {
+  color: $yellow;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}

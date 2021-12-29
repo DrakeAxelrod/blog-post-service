@@ -23,6 +23,7 @@ declare type Image = {
   h: number;
   w: number;
   type: string;
+  alt: string;
 };
 
 declare type TOCItem = {

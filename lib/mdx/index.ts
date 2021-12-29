@@ -165,8 +165,9 @@ export const get_all_bundles = async () => {
     return await bundle(slug);
   });
   return await Promise.all(requests).then((res) => {
-    const notDraft = res.filter((e) => !e.frontMatter.draft);
-    return notDraft.sort((a, b) => {
+    const isDev = process.env.NODE_ENV === "development";
+    const posts = isDev ? res.filter((e) => !e.frontMatter.draft) : res;
+    return posts.sort((a, b) => {
       // sort for latest posts
       const a1 = new Date(a.frontMatter.date).getTime();
       const b1 = new Date(b.frontMatter.date).getTime();
