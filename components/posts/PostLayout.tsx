@@ -27,7 +27,7 @@ const PostLayout: FC<PostLayoutProps> = ({ children, frontMatter }) => {
   const {
     toc,
     title,
-    published,
+    updated,
     image,
     author,
     tags,
@@ -56,7 +56,7 @@ const PostLayout: FC<PostLayoutProps> = ({ children, frontMatter }) => {
               {"• Published "}
               <Text as="time">{parseDate(created).shortFormatted}</Text>
               {" • Updated on "}
-              <Text as="time">{parseDate(published).shortFormatted}</Text>
+              <Text as="time">{parseDate(updated).shortFormatted}</Text>
               {" •"}
             </Text>
             <NextChakraImage

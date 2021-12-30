@@ -1,5 +1,5 @@
 ---
-title: HackTheBox - Explosion
+title: Looking Into the Linux File System
 image:
   url: /jenga-2-bw_jkwych.webp
   alt: HackTheBox fawn machine pwn image
@@ -10,8 +10,28 @@ tags:
   - linux
   - operating systems
 draft: true
-created: "Wed Dec 22 2021 23:42:55 GMT+0100 (Central European Standard Time)"
-updated: "Wed Dec 29 2021 23:43:35 GMT+0100 (Central European Standard Time)"
+created: "Wed Dec 29 2021 23:42:55 GMT+0100 (Central European Standard Time)"
+updated: "Wed Dec 29 2021 23:47:18 GMT+0100 (Central European Standard Time)"
 ---
 
-something
+## the Linux File System
+
+The first thing thats important to understand when dealing with a linux system is the root directory. It is located at "/",
+if you happen to be on a linux system and you type in cd / you will change your directory to the root directory.
+
+```bash:terminal
+[draxel/laptop][~] $ cd /
+[draxel/laptop][/] $
+```
+
+In addition another useful thing to know with linux systems is the the "~" represents the current users home director.
+For example im currently logged in as draxel, which means if i type cd ~ i will change directory to /home/draxel
+
+```bash:terminal
+[draxel/laptop][…/website] $ cd ~
+[draxel/laptop][~] $
+```
+
+## Linux File System Outline
+
+**/** - The Root Directory where all your files are located

@@ -40,8 +40,8 @@ const update_front_matter_dates = (file_path) => {
   const file = matter.read(file_path);
   const { data: currentFrontmatter } = file;
   const updatedFrontMatter = {
-    created: stats.created,
     ...currentFrontmatter,
+    created:  currentFrontmatter.created ? currentFrontmatter.created : stats.created,
     updated: stats.updated,
   };
   

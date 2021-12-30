@@ -17,6 +17,14 @@ const Prism = () => {
         :root {
           font-variant-ligatures: none;
         }
+        .mdx blockquote {
+          opacity: 80%;
+          background: ${colors.black.bright};
+          color: ${colors.white.normal};
+          border-left: 10px solid ${colors.red.bright};
+          margin: 1.5em 10px;
+          padding: 1em;
+        }
         .mdx hr {
           margin: 50px 0;
           display: block;
@@ -177,9 +185,9 @@ const Prism = () => {
         .rehype-code-title {
           background: ${colors.white.normal};
           border-color: ${colors.white.normal};
-          color: ${colors.white.bright};
+          color: ${colors.black.dark};
           margin-top: ${theme.space[4]};
-          padding: $space_2 ${theme.space[4]};
+          padding: ${theme.space[2]};
           border-top-left-radius: ${theme.radii.md};
           border-top-right-radius: ${theme.radii.md};
           font-family: ${font.heading};
@@ -195,12 +203,13 @@ const Prism = () => {
             margin-top: 0;
           }
         }
+
         /**
- * Nord Theme Originally by Arctic Ice Studio
- * https://nordtheme.com
- *
- * Ported for PrismJS by Zane Hitchcoxc (@zwhitchcox) and Gabriel Ramos (@gabrieluizramos)
- */
+        * Nord Theme Originally by Arctic Ice Studio
+        * https://nordtheme.com
+        *
+        * Ported for PrismJS by Zane Hitchcoxc (@zwhitchcox) and Gabriel Ramos (@gabrieluizramos)
+        */
         code[class*="language-"],
         pre[class*="language-"] {
           color: ${colors.red};

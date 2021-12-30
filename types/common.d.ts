@@ -9,7 +9,7 @@ export type MyWrapper = {
   children?: ReactNode;
 };
 
-declare type Author = {
+declare type Author = ?{
   name: {
     first: string;
     last: string;
@@ -29,7 +29,7 @@ declare type Author = {
   };
   avatar: string;
   summary: string;
-}?;
+};
 
 declare type Image = {
   url: string;
@@ -50,7 +50,7 @@ declare type FrontMatter = {
   title: string;
   author: Author;
   created: string;
-  published: string;
+  updated: string;
   image: Image;
   toc: TOCItem[];
   description: string;
